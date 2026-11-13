@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Free PU expanding foam calculator for window and door installation. Estimate joint volume and cans required using adjustable yield, efficiency, and waste assumptions.">
+  <meta name="theme-color" content="#102d46">
+  <title>PU Foam Calculator: Estimate Cans for Joints & Windows | YHRHX</title>
+  <link rel="stylesheet" href="./assets/styles.css">
+  <script type="module" src="./src/app.js"></script>
+</head>
+<body>
+<header class="site-header"><div class="container">
+  <a class="logo" href="./" aria-label="YHRHX PU Foam Calculator home">YHRHX / PU FOAM TOOLS</a>
+  <nav class="header-links" aria-label="Site navigation"><a href="./" aria-current="page">English</a><a href="./es/" lang="es">Español</a><a href="https://yhrhx.com/" target="_blank" rel="noopener noreferrer">Manufacturer site</a></nav>
+</div></header>
+<main class="container">
+<section class="hero" aria-labelledby="main-title">
+  <span class="eyebrow">Free construction estimation tool</span>
+  <h1 id="main-title">PU Foam Usage Calculator</h1>
+  <p class="lead">Estimate the number of expanding foam cans needed to fill construction joints, including window and door installation gaps. Adjust the assumptions to suit your project and product data.</p>
+  <span class="badge">No registration · No personal data collected</span>
+</section>
+<div class="app-grid">
+  <section class="panel" aria-labelledby="calc-title">
+    <h2 id="calc-title">Enter joint dimensions</h2>
+    <p class="panel-intro">Use your product's documented yield and adjust for site conditions. Values in the form are examples, not tested YHRHX product specifications.</p>
+    <form id="calculator" novalidate>
+      <div class="label-row"><label for="units">Measurement system</label><select id="units" name="units"><option value="metric">Metric (m / mm / L)</option><option value="imperial">Imperial (ft / in / ft³)</option></select></div>
+      <div class="grid-fields">
+        <div class="field"><label for="length">Total joint length</label><div class="input-wrap"><input id="length" name="length" type="number" min="0" step="any" value="20" inputmode="decimal" aria-describedby="error-length"><span class="unit" id="unit-length">m</span></div><span class="error" id="error-length" aria-live="polite"></span></div>
+        <div class="field"><label for="width">Joint width</label><div class="input-wrap"><input id="width" name="width" type="number" min="0" step="any" value="20" inputmode="decimal" aria-describedby="error-width"><span class="unit" id="unit-width">mm</span></div><span class="error" id="error-width" aria-live="polite"></span></div>
+        <div class="field"><label for="depth">Joint depth</label><div class="input-wrap"><input id="depth" name="depth" type="number" min="0" step="any" value="50" inputmode="decimal" aria-describedby="error-depth"><span class="unit" id="unit-depth">mm</span></div><span class="error" id="error-depth" aria-live="polite"></span></div>
+        <div class="field"><label for="yield">Nominal free-foam yield per can</label><div class="input-wrap"><input id="yield" name="yield" type="number" min="0.01" step="any" placeholder="Required" inputmode="decimal" aria-describedby="error-yield"><span class="unit" id="unit-yield">L</span></div><span class="error" id="error-yield" aria-live="polite"></span></div>
+        <div class="field"><label for="utilization">Assumed usable yield</label><div class="input-wrap"><input id="utilization" name="utilization" type="number" min="1" max="100" step="any" value="75" inputmode="decimal" aria-describedby="error-utilization"><span class="unit">%</span></div><span class="hint">Editable example, not a guarantee.</span><span class="error" id="error-utilization" aria-live="polite"></span></div>
+        <div class="field"><label for="waste">Additional waste allowance</label><div class="input-wrap"><input id="waste" name="waste" type="number" min="0" max="100" step="any" value="10" inputmode="decimal" aria-describedby="error-waste"><span class="unit">%</span></div><span class="hint">Editable example, not a guarantee.</span><span class="error" id="error-waste" aria-live="polite"></span></div>
+      </div>
+    </form>
+    <p class="small-note">All input values are editable. If measuring multiple identical joints, enter their combined length. Avoid assuming a marketed free-foam yield is equal to in-joint output.</p>
+  </section>
+  <aside class="panel results" aria-labelledby="results-title">
+    <h2 id="results-title">Estimated requirement</h2><p class="panel-intro">Calculated instantly from your inputs</p>
+    <div class="metric-label">Whole cans (rounded up)</div><div class="big-number" id="result-cans">—</div>
+    <p id="form-status" class="small-note" role="status" aria-live="polite">Complete the required fields to see an estimate.</p>
+    <div class="divider"></div>
+    <div class="stat"><span>Unadjusted joint volume</span><strong id="result-volume">—</strong></div>
+    <div class="stat"><span>Usable yield per can</span><strong id="result-usable">—</strong></div>
+    <p id="result-description" class="small-note" hidden>Additional waste is applied to joint volume before calculating whole cans.</p>
+    <a class="cta" href="https://yhrhx.com/contact" target="_blank" rel="noopener noreferrer">Contact YHRHX for bulk supply</a>
+    <p class="small-note">Estimates only. Verify product data, jobsite conditions, joint design, curing, and application requirements before ordering or installing.</p>
+  </aside>
+</div>
+<section class="details" aria-labelledby="about-title"><h2 id="about-title">How this PU foam calculator works</h2>
+  <div class="details-grid">
+    <article class="panel"><h2>Method and formula</h2><p>For metric inputs, joint volume in liters = total length (m) × gap width (mm) × gap depth (mm) ÷ 1,000.</p><p>Usable yield per can = nominal free-foam yield × usable-yield percentage. Estimated cans = round up [joint volume × (1 + waste allowance) ÷ usable yield per can].</p><p>Imperial units are converted to SI internally before calculation. Input the <strong>total</strong> length of all joints to estimate.</p></article>
+    <article class="panel"><h2>Important limitations</h2><ul><li>Nominal free-foam yield is not a guarantee of installed joint fill volume.</li><li>Moisture, temperature, substrate, joint geometry, application method, and product formulation may change actual consumption.</li><li>Do not use this estimate to validate fire resistance, structural performance, or manufacturer certification.</li><li>Use verified product technical documents and follow site-specific safety guidance.</li></ul><p>Learn more about <a href="https://yhrhx.com/products" target="_blank" rel="noopener noreferrer">YHRHX PU foam products</a>.</p></article>
+  </div>
+</section>
+</main>
+<footer class="footer"><div class="container">Open-source calculator by <a href="https://yhrhx.com/" target="_blank" rel="noopener noreferrer">YHRHX</a> · Tool logic and documentation provided for general estimates; see repository MIT License.</div></footer>
+</body></html>

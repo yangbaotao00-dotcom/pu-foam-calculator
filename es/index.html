@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculadora gratuita de espuma de poliuretano expansiva para ventanas, puertas y juntas de construcción. Estima volumen y cantidad de envases con parámetros ajustables.">
+  <meta name="theme-color" content="#102d46">
+  <title>Calculadora de espuma de poliuretano expansiva | YHRHX</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  <script type="module" src="../src/app.js"></script>
+</head>
+<body>
+<header class="site-header"><div class="container">
+  <a class="logo" href="../" aria-label="Inicio de YHRHX PU Foam Calculator">YHRHX / PU FOAM TOOLS</a>
+  <nav class="header-links" aria-label="Navegación"><a href="../" lang="en">English</a><a href="./" aria-current="page">Español</a><a href="https://yhrhx.com/es" target="_blank" rel="noopener noreferrer">Sitio del fabricante</a></nav>
+</div></header>
+<main class="container">
+<section class="hero" aria-labelledby="main-title">
+  <span class="eyebrow">Herramienta gratuita de estimación</span>
+  <h1 id="main-title">Calculadora de espuma de poliuretano</h1>
+  <p class="lead">Estima cuántos envases de espuma expansiva se necesitan para rellenar juntas de construcción, incluidos los huecos de instalación de puertas y ventanas. Ajusta los supuestos según tu obra y los datos del producto.</p>
+  <span class="badge">Sin registro · Sin recopilación de datos personales</span>
+</section>
+<div class="app-grid">
+  <section class="panel" aria-labelledby="calc-title">
+    <h2 id="calc-title">Introduce las dimensiones</h2>
+    <p class="panel-intro">Utiliza el rendimiento documentado de tu producto y considera las condiciones de obra. Los valores de ejemplo no son especificaciones verificadas de los productos YHRHX.</p>
+    <form id="calculator" novalidate>
+      <div class="label-row"><label for="units">Sistema de unidades</label><select id="units" name="units"><option value="metric">Métrico (m / mm / L)</option><option value="imperial">Imperial (pies / pulg. / pies³)</option></select></div>
+      <div class="grid-fields">
+        <div class="field"><label for="length">Longitud total de las juntas</label><div class="input-wrap"><input id="length" name="length" type="number" min="0" step="any" value="20" inputmode="decimal" aria-describedby="error-length"><span class="unit" id="unit-length">m</span></div><span class="error" id="error-length" aria-live="polite"></span></div>
+        <div class="field"><label for="width">Anchura de la junta</label><div class="input-wrap"><input id="width" name="width" type="number" min="0" step="any" value="20" inputmode="decimal" aria-describedby="error-width"><span class="unit" id="unit-width">mm</span></div><span class="error" id="error-width" aria-live="polite"></span></div>
+        <div class="field"><label for="depth">Profundidad de la junta</label><div class="input-wrap"><input id="depth" name="depth" type="number" min="0" step="any" value="50" inputmode="decimal" aria-describedby="error-depth"><span class="unit" id="unit-depth">mm</span></div><span class="error" id="error-depth" aria-live="polite"></span></div>
+        <div class="field"><label for="yield">Rendimiento nominal de espuma libre por envase</label><div class="input-wrap"><input id="yield" name="yield" type="number" min="0.01" step="any" placeholder="Obligatorio" inputmode="decimal" aria-describedby="error-yield"><span class="unit" id="unit-yield">L</span></div><span class="error" id="error-yield" aria-live="polite"></span></div>
+        <div class="field"><label for="utilization">Rendimiento útil supuesto</label><div class="input-wrap"><input id="utilization" name="utilization" type="number" min="1" max="100" step="any" value="75" inputmode="decimal" aria-describedby="error-utilization"><span class="unit">%</span></div><span class="hint">Ejemplo editable, sin garantía.</span><span class="error" id="error-utilization" aria-live="polite"></span></div>
+        <div class="field"><label for="waste">Margen adicional de desperdicio</label><div class="input-wrap"><input id="waste" name="waste" type="number" min="0" max="100" step="any" value="10" inputmode="decimal" aria-describedby="error-waste"><span class="unit">%</span></div><span class="hint">Ejemplo editable, sin garantía.</span><span class="error" id="error-waste" aria-live="polite"></span></div>
+      </div>
+    </form>
+    <p class="small-note">Todos los valores pueden cambiarse. Para varias juntas, introduce la longitud total. El rendimiento de espuma libre indicado por un fabricante no equivale necesariamente al volumen efectivo en la junta.</p>
+  </section>
+  <aside class="panel results" aria-labelledby="results-title">
+    <h2 id="results-title">Cantidad estimada</h2><p class="panel-intro">Se actualiza automáticamente según tus datos</p>
+    <div class="metric-label">Envases completos (redondeo hacia arriba)</div><div class="big-number" id="result-cans">—</div>
+    <p id="form-status" class="small-note" role="status" aria-live="polite">Completa los campos obligatorios para ver una estimación.</p>
+    <div class="divider"></div>
+    <div class="stat"><span>Volumen de juntas sin ajuste</span><strong id="result-volume">—</strong></div>
+    <div class="stat"><span>Rendimiento útil por envase</span><strong id="result-usable">—</strong></div>
+    <p id="result-description" class="small-note" hidden>El margen de desperdicio se aplica al volumen de la junta antes de calcular envases completos.</p>
+    <a class="cta" href="https://yhrhx.com/es/contact" target="_blank" rel="noopener noreferrer">Consultar suministro mayorista a YHRHX</a>
+    <p class="small-note">Cálculos orientativos. Verifica los datos técnicos, las condiciones de obra, el diseño de la junta, el curado y los requisitos de aplicación antes de comprar o instalar.</p>
+  </aside>
+</div>
+<section class="details" aria-labelledby="about-title"><h2 id="about-title">Cómo funciona la calculadora de espuma expansiva</h2>
+  <div class="details-grid">
+    <article class="panel"><h2>Fórmula utilizada</h2><p>Con unidades métricas, el volumen de junta en litros = longitud total (m) × anchura (mm) × profundidad (mm) ÷ 1000.</p><p>Rendimiento útil = rendimiento nominal de espuma libre × porcentaje de aprovechamiento. Envases estimados = redondear hacia arriba [volumen de junta × (1 + margen de desperdicio) ÷ rendimiento útil por envase].</p><p>Las unidades imperiales se convierten internamente al sistema métrico. Indica la longitud <strong>total</strong> de todas las juntas.</p></article>
+    <article class="panel"><h2>Limitaciones importantes</h2><ul><li>El rendimiento nominal de espuma libre no garantiza el volumen final aplicado en las juntas.</li><li>La humedad, temperatura, soporte, geometría, método de aplicación y formulación afectan al consumo real.</li><li>Esta estimación no certifica resistencia al fuego, capacidad estructural ni homologaciones del fabricante.</li><li>Utiliza documentación técnica verificada y las instrucciones de seguridad correspondientes.</li></ul><p>Consulta los <a href="https://yhrhx.com/es/products" target="_blank" rel="noopener noreferrer">productos de espuma de poliuretano YHRHX</a>.</p></article>
+  </div>
+</section>
+</main>
+<footer class="footer"><div class="container">Calculadora de código abierto de <a href="https://yhrhx.com/es" target="_blank" rel="noopener noreferrer">YHRHX</a> · Cálculos orientativos; consulta la licencia MIT del repositorio.</div></footer>
+</body></html>
